@@ -1,0 +1,26 @@
+---
+description: Project overview and conventions for this Astro static site deployed to GitHub Pages
+alwaysApply: true
+---
+
+# Project: Astro static site on GitHub Pages
+
+## Stack
+- [Astro](https://astro.build) (static output, TypeScript strict), Node >= 22.12 (see `engines` in package.json).
+- Plain scoped CSS in `.astro` files; global theme via CSS variables in `src/layouts/Layout.astro`.
+- Hosted on GitHub Pages at https://bendari500-design.github.io/my-website/ and deployed by `.github/workflows/deploy.yml` (withastro/action + actions/deploy-pages) on every push to `main`.
+
+## Layout
+- `astro.config.mjs` — `site` and `base` (`/my-website`) for GitHub Pages.
+- `src/layouts/Layout.astro` — shared HTML shell: meta tags, favicons, global CSS variables (dark theme).
+- `src/pages/index.astro` — landing page; editable content lives in the `site` object in frontmatter (marked `✏️ EDIT ME`).
+- `src/pages/*.astro` — each file becomes a route.
+- `public/` — static assets copied as-is (favicons, images, `CNAME` for custom domains).
+
+## Conventions
+- ALWAYS prefix internal links and asset URLs with `import.meta.env.BASE_URL` (e.g. ``href={`${base}about/`}``); never hardcode `/about` — it breaks on GitHub Pages.
+- If the GitHub repo is renamed, update `base` in `astro.config.mjs` (and the URLs in README / this file). If a custom domain is used, remove `base` and set `site` to the domain.
+- Reuse the CSS variables (`--bg`, `--text`, `--accent`, …) instead of hardcoding colors.
+- Keep the site static and dependency-light; only add client-side JS when necessary.
+- Run `npm run build` and make sure it succeeds before pushing to `main` (pushing deploys to production).
+- Commit `package-lock.json` (the deploy action uses it to detect npm).
