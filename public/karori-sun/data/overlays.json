@@ -1,0 +1,59 @@
+{
+ "layers": [
+  {
+   "key": "total",
+   "label": "Day (year avg)",
+   "file": "data/sun_total.png",
+   "vmax": 12
+  },
+  {
+   "key": "am",
+   "label": "Morning (sunrise-solar noon)",
+   "file": "data/sun_am.png",
+   "vmax": 6
+  },
+  {
+   "key": "pm",
+   "label": "Afternoon (solar noon-sunset)",
+   "file": "data/sun_pm.png",
+   "vmax": 6
+  },
+  {
+   "key": "jun",
+   "label": "June (winter) avg",
+   "file": "data/sun_jun.png",
+   "vmax": 9
+  },
+  {
+   "key": "dec",
+   "label": "December (summer) avg",
+   "file": "data/sun_dec.png",
+   "vmax": 15
+  }
+ ],
+ "bounds": [
+  [
+   -41.30949172441428,
+   174.7003697065137
+  ],
+  [
+   -41.265161216091215,
+   174.7571412071554
+  ]
+ ],
+ "ramp": [
+  "#0b0b2a",
+  "#3b2b63",
+  "#8c3f73",
+  "#d9633f",
+  "#f5b93a",
+  "#fff6a8"
+ ],
+ "possible": {
+  "total": 12.06,
+  "am": 6.03,
+  "pm": 6.03,
+  "jun": 9.18,
+  "dec": 15.03
+ }
+}

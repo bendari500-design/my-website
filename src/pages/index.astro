@@ -33,6 +33,13 @@ const site = {
       title: 'Deploys on push',
       body: 'Every push to main builds and publishes the site automatically with GitHub Actions.',
     },
+    {
+      icon: '☀️',
+      title: 'Karori sunlight map',
+      body: 'Interactive map of average hours of direct sun across Karori, modelled from 1 m LiDAR, with current listings.',
+      href: `${base}karori-sun/`,
+      cta: 'Open the map →',
+    },
   ],
   // ✏️ EDIT ME — footer links
   links: [
@@ -49,6 +56,7 @@ const year = new Date().getFullYear();
     <a class="brand" href={base}>{site.name}</a>
     <nav>
       <a href={`${base}#features`}>Features</a>
+      <a href={`${base}karori-sun/`}>Karori sun map</a>
       <a href={site.secondaryCta.href}>Contact</a>
     </nav>
   </header>
@@ -67,13 +75,22 @@ const year = new Date().getFullYear();
 
     <section id="features" class="features">
       {
-        site.features.map((f) => (
-          <article class="card">
-            <div class="icon" aria-hidden="true">{f.icon}</div>
-            <h2>{f.title}</h2>
-            <p>{f.body}</p>
-          </article>
-        ))
+        site.features.map((f) =>
+          f.href ? (
+            <a class="card card-link" href={f.href}>
+              <div class="icon" aria-hidden="true">{f.icon}</div>
+              <h2>{f.title}</h2>
+              <p>{f.body}</p>
+              {f.cta && <span class="card-cta">{f.cta}</span>}
+            </a>
+          ) : (
+            <article class="card">
+              <div class="icon" aria-hidden="true">{f.icon}</div>
+              <h2>{f.title}</h2>
+              <p>{f.body}</p>
+            </article>
+          )
+        )
       }
     </section>
   </main>
@@ -247,6 +264,20 @@ const year = new Date().getFullYear();
   .card p {
     margin: 0;
     color: var(--text-muted);
+  }
+
+  .card-link {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .card-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent-2);
+    font-weight: 600;
+    font-size: 0.95rem;
   }
 
   .footer {

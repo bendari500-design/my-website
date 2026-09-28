@@ -53,6 +53,8 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site 
 ├── .github/workflows/deploy.yml   # GitHub Pages deploy
 ├── .cursor/rules/project.mdc      # Cursor AI project rules
 ├── public/                        # static assets (favicons, images, CNAME)
+│   └── karori-sun/                # Karori sunlight map (static, served as-is)
+├── scripts/update-karori-listings.sh  # refresh + deploy Karori listings
 ├── src/
 │   ├── layouts/Layout.astro       # shared HTML shell + global styles
 │   └── pages/index.astro          # landing page
@@ -67,6 +69,19 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site 
 | `npm run dev`     | Start local dev server at `localhost:4321`  |
 | `npm run build`   | Build the production site to `./dist/`      |
 | `npm run preview` | Preview the build locally                   |
+
+## Karori sunlight map
+
+A standalone static page (Leaflet + PNG sun overlays) lives in `public/karori-sun/` and is served as-is at
+https://bendari500-design.github.io/my-website/karori-sun/. It uses only relative paths, so it works under the `/my-website` base. The home page links to it.
+
+To refresh the property listings shown on the map:
+
+```bash
+scripts/update-karori-listings.sh
+```
+
+This copies `/workspace/karori-sun/site/data/listings.geojson` (override with `KARORI_SRC=...`) into `public/karori-sun/data/listings.geojson`. If nothing changed it exits. Otherwise it commits only that file as "Update Karori listings", pushes to `main`, waits for the Pages deploy workflow (`gh run watch --exit-status`), and checks that the live `listings.geojson` returns HTTP 200. Requires an authenticated `gh` CLI and must be run on `main`.
 
 ## Notes
 
