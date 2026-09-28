@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wellington region sunlight map: hours of direct sun</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="style.css?v=202609272335">
+<link rel="stylesheet" href="style.css?v=202609280046">
 </head>
 <body>
 <div id="map"></div>
@@ -18,6 +18,17 @@
   <label class="row">Overlay opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.7"></label>
   <div id="legend"></div>
   <div class="hint">One continuous map with one colour scale (same palette and maximum per layer everywhere).</div>
+  <div class="wvbox" id="wv-box">
+    <label><input type="checkbox" id="wv-on"> <b>💧 Potential water view</b></label>
+    <div id="wv-controls" hidden>
+      <label class="row">Minimum width <select id="wv-min"><option value="5">5° or more</option><option value="20">20° or more</option><option value="45">45° or more</option><option value="90">90° or more</option></select></label>
+      <label class="row">Maximum distance <select id="wv-dist"><option value="0">any (up to 15 km)</option><option value="500">500 m</option><option value="1000">1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select></label>
+      <label class="row"><span><input type="checkbox" id="wv-sea"> Sea or harbour only (no lakes)</span></label>
+      <div id="wv-legend" class="wvlegend"></div>
+      <div id="wv-count" class="hint"></div>
+      <div class="hint">Only addresses with a potential view are shown, at every zoom level (the sun overlay is dimmed while this is on). Zoom in (14+) and click a dot for its view width, bearing and distance.</div>
+    </div>
+  </div>
   <div class="group toggles">
     <label><input type="checkbox" id="show-outlines" checked> Suburb outlines &amp; labels</label>
     <label><input type="checkbox" id="show-sale" checked> <span class="dot sale"></span>For sale</label>
@@ -30,12 +41,13 @@
   <details><summary>About / method</summary>
     <p>The sun layers are map tiles computed for the whole urban area in one run: every 2&nbsp;m cell within 150&nbsp;m of a LINZ address in Wellington City, Porirua City, Lower Hutt City and Upper Hutt City (<span id="naddr"></span> addresses). Tiles exist for zoom 11–16 (≈2&nbsp;m per pixel at zoom 16) and are enlarged beyond that. Click anywhere (zoom 14+) for the nearest address's garden and roof scores; address data loads in small chunks for the area in view.</p>
     <p>Sun and shade come from a horizon-angle model run on LINZ 1&nbsp;m LiDAR surfaces (Wellington City 2025, Hutt City 2025, Upper Hutt City 2025, Porirua 2023, Kāpiti Coast 2024–25, gap-filled with the Wellington 2013–14 survey), plus an 8&nbsp;m surface out to 12&nbsp;km for distant hills. The sun's position is sampled every 10 minutes for all of 2026 (pvlib SPA). Cloud isn't modelled. <b>Morning</b> = sunrise to solar noon, <b>Afternoon</b> = solar noon to sunset. <b>Garden</b> = 1.7&nbsp;m above ground at the LINZ address point; <b>Roof</b> = top of the matched LINZ building outline. Sea and areas without LiDAR are blank.</p>
+    <p><b>Potential water view</b>: from the LINZ address point, 1.5&nbsp;m above the roof (or 4.5&nbsp;m above the ground if the point isn't on a building; the highest spot within 5&nbsp;m), 360 sight lines 1° apart are traced for 15&nbsp;km over the same LiDAR surface (buildings and trees included, Earth curvature allowed for). A direction counts if it reaches the sea, the harbour or a lake or reservoir of at least 0.5&nbsp;ha (LINZ coastline and lake outlines) above everything nearer. The <b>width</b> is the number of such 1° directions (a view needs 5° or more), the <b>bearing</b> is the middle of the widest continuous stretch, and the <b>distance</b> is to the nearest visible water. This is an upper bound: it doesn't know which way windows face, and it uses the surface as surveyed (2023–25, some 2013–14).</p>
     <p>Maximum possible: <span id="possible"></span>.</p>
     <p class="small">Data: LINZ LiDAR DSM/DEM, NZ Addresses, NZ Building Outlines, NZ Suburbs and Localities (CC BY 4.0). Listings: Trade Me. Base map © OpenStreetMap contributors. <span id="generated"></span></p>
   </details>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>window.SUN_DATA = '/wellington-sun-tiles/';</script>
-<script src="app.js?v=202609272335"></script>
+<script src="app.js?v=202609280046"></script>
 </body>
 </html>

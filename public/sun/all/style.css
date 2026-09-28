@@ -38,3 +38,12 @@ details{font-size:12px;color:#333}.small{color:#666;font-size:11px}
 .sub-label span,.sub-label a{font:600 11px system-ui,sans-serif;color:#222;text-decoration:none;background:rgba(255,255,255,.72);padding:1px 4px;border-radius:3px;white-space:nowrap}
 .sub-label span{color:#444;font-weight:500;box-shadow:none;background:rgba(255,255,255,.55)}
 .sun-tiles img{image-rendering:auto}
+
+/* water view */
+.wvbox{border:1px solid #b9d9f5;background:#f2f8fe;border-radius:6px;padding:5px 7px;margin:6px 0}
+.wvbox select{font-size:12px;max-width:150px}
+.wvbox .row{margin-top:4px}
+.wvlegend{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;margin-top:5px}
+.wvlegend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:3px;vertical-align:-1px;box-shadow:0 0 0 1px #fff,0 0 0 2px #999}
+.wvlegend .small{width:100%}
+.tt .wv{margin-top:5px;font-size:12px;color:#0b3d91}.tt .wv.none{color:#555}
