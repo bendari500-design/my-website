@@ -17,10 +17,14 @@ const total = maps.reduce((n, m) => n + m.addresses, 0);
   <main>
     <h1>☀️ Wellington sunlight maps</h1>
     <p class="intro">
-      Year-average, winter and summer hours of direct sun (clear sky) for {maps.length} Wellington City suburbs and
+      Year-average, winter and summer hours of direct sun (clear sky) for {maps.length} Wellington City suburbs and{' '}
       {total.toLocaleString('en-NZ')} LINZ addresses. The model uses the LINZ 2025 1&nbsp;m LiDAR surface
       (buildings and trees), gap-filled from the 2013–14 survey, plus distant hills out to 12&nbsp;km. Each map
       has a 2&nbsp;m overlay (day, morning, afternoon, June, December) and a garden and roof score for every address.
+    </p>
+    <p class="all">
+      <a class="all-btn" href={`${base}sun/all/`}>🗺️ View all together</a>
+      <span>All {maps.length} suburbs on one map, with a cross-suburb address search</span>
     </p>
     <ul class="grid">
       {
@@ -60,6 +64,29 @@ const total = maps.reduce((n, m) => n + m.addresses, 0);
   .intro {
     color: var(--text-muted);
     max-width: 760px;
+  }
+  .all {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin: 1.5rem 0 0;
+    color: var(--text-muted);
+  }
+  .all-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--radius);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  .all-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
   }
   .grid {
     list-style: none;
