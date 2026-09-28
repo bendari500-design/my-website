@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>All Wellington sunlight maps on one map: hours of direct sun</title>
+<title>Wellington region sunlight map: hours of direct sun</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="style.css?v=202609272200">
+<link rel="stylesheet" href="style.css?v=202609272335">
 </head>
 <body>
 <div id="map"></div>
 <div class="panel" id="panel">
-  <h1>☀ Wellington sunlight: all suburbs</h1>
+  <h1>☀ Wellington region sunlight</h1>
   <div class="sub"><a href="../">← All Wellington sunlight maps</a></div>
-  <div class="sub">Average hours of direct sun per day (clear sky) for 16 suburbs on one map, from 1&nbsp;m LiDAR incl. buildings &amp; trees</div>
-  <div class="search"><input id="q" type="search" placeholder="Search any address, e.g. 15 Rimu Road" autocomplete="off" aria-label="Search addresses in all suburbs"><ul id="results"></ul></div>
+  <div class="sub">Average hours of direct sun per day (clear sky) across Wellington City, Porirua, Lower Hutt and Upper Hutt, from 1&nbsp;m LiDAR incl. buildings &amp; trees</div>
+  <div class="search"><input id="q" type="search" placeholder="Search any address, e.g. 15 Rimu Road" autocomplete="off" aria-label="Search addresses"><ul id="results"></ul></div>
   <div class="group" id="layer-buttons"></div>
   <label class="row">Overlay opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.7"></label>
   <div id="legend"></div>
-  <div class="hint">All 16 suburbs use the same colour scale (same palette and the same maximum per layer), so colours can be compared across suburb borders.</div>
+  <div class="hint">One continuous map with one colour scale (same palette and maximum per layer everywhere).</div>
   <div class="group toggles">
     <label><input type="checkbox" id="show-outlines" checked> Suburb outlines &amp; labels</label>
     <label><input type="checkbox" id="show-sale" checked> <span class="dot sale"></span>For sale</label>
@@ -26,16 +26,16 @@
   </div>
   <div id="status" class="status"></div>
   <div id="loadinfo" class="hint"></div>
-  <details><summary>Suburb maps</summary><ul class="sublist" id="sublist"></ul></details>
+  <details><summary>Detailed suburb maps</summary><ul class="sublist" id="sublist"></ul></details>
   <details><summary>About / method</summary>
-    <p>This page puts the 16 individual suburb maps together. It reuses the suburbs' own overlay images and address files and loads them only when needed: overlays load for suburbs in view from zoom&nbsp;12, address scores (click-for-scores and the address dots) from zoom&nbsp;15, and the dots show from zoom&nbsp;16. The address search loads a small combined index the first time you use it.</p>
-    <p>Each overlay is clipped to its own suburb boundary (LINZ NZ Suburbs and Localities), so neighbouring suburbs meet at the boundary line instead of overlapping. The individual pages extend 100&nbsp;m past the boundary. Areas outside these 16 suburbs, or more than 400&nbsp;m from an address, are blank.</p>
-    <p>Sun and shade come from a horizon-angle model run on the LINZ Wellington City 2025 1&nbsp;m LiDAR DSM, gap-filled with the 2013–14 survey, plus an 8&nbsp;m DSM out to 12&nbsp;km for distant hills. The sun's position is sampled every 10 minutes for all of 2026 (pvlib SPA). Cloud isn't modelled. <b>Morning</b> = sunrise to solar noon, <b>Afternoon</b> = solar noon to sunset. <b>Garden</b> = 1.7&nbsp;m above ground at the LINZ address point; <b>Roof</b> = top of the matched LINZ building outline.</p>
+    <p>The sun layers are map tiles computed for the whole urban area in one run: every 2&nbsp;m cell within 150&nbsp;m of a LINZ address in Wellington City, Porirua City, Lower Hutt City and Upper Hutt City (<span id="naddr"></span> addresses). Tiles exist for zoom 11–16 (≈2&nbsp;m per pixel at zoom 16) and are enlarged beyond that. Click anywhere (zoom 14+) for the nearest address's garden and roof scores; address data loads in small chunks for the area in view.</p>
+    <p>Sun and shade come from a horizon-angle model run on LINZ 1&nbsp;m LiDAR surfaces (Wellington City 2025, Hutt City 2025, Upper Hutt City 2025, Porirua 2023, Kāpiti Coast 2024–25, gap-filled with the Wellington 2013–14 survey), plus an 8&nbsp;m surface out to 12&nbsp;km for distant hills. The sun's position is sampled every 10 minutes for all of 2026 (pvlib SPA). Cloud isn't modelled. <b>Morning</b> = sunrise to solar noon, <b>Afternoon</b> = solar noon to sunset. <b>Garden</b> = 1.7&nbsp;m above ground at the LINZ address point; <b>Roof</b> = top of the matched LINZ building outline. Sea and areas without LiDAR are blank.</p>
     <p>Maximum possible: <span id="possible"></span>.</p>
-    <p class="small">Data: LINZ LiDAR DSM/DEM, NZ Addresses, NZ Building Outlines, NZ Suburbs and Localities (CC BY 4.0). Listings: Trade Me. Base map © OpenStreetMap contributors.</p>
+    <p class="small">Data: LINZ LiDAR DSM/DEM, NZ Addresses, NZ Building Outlines, NZ Suburbs and Localities (CC BY 4.0). Listings: Trade Me. Base map © OpenStreetMap contributors. <span id="generated"></span></p>
   </details>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="app.js?v=202609272200"></script>
+<script>window.SUN_DATA = '/wellington-sun-tiles/';</script>
+<script src="app.js?v=202609272335"></script>
 </body>
 </html>

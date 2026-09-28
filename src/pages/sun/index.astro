@@ -9,7 +9,7 @@ const total = maps.reduce((n, m) => n + m.addresses, 0);
 
 <Layout
   title="Wellington sunlight maps"
-  description="Average hours of direct sun for every address in 16 Wellington City suburbs, modelled from 1 m LiDAR."
+  description="Average hours of direct sun for every address in Wellington City, Porirua, Lower Hutt and Upper Hutt, modelled from 1 m LiDAR."
 >
   <header class="nav">
     <a class="brand" href={base}>← Home</a>
@@ -17,14 +17,20 @@ const total = maps.reduce((n, m) => n + m.addresses, 0);
   <main>
     <h1>☀️ Wellington sunlight maps</h1>
     <p class="intro">
-      Year-average, winter and summer hours of direct sun (clear sky) for {maps.length} Wellington City suburbs and{' '}
-      {total.toLocaleString('en-NZ')} LINZ addresses. The model uses the LINZ 2025 1&nbsp;m LiDAR surface
-      (buildings and trees), gap-filled from the 2013–14 survey, plus distant hills out to 12&nbsp;km. Each map
-      has a 2&nbsp;m overlay (day, morning, afternoon, June, December) and a garden and roof score for every address.
+      Year-average, winter and summer hours of direct sun (clear sky) for the whole urban area of Wellington City, Porirua,
+      Lower Hutt and Upper Hutt: 192,437 LINZ addresses, each with a garden and a roof score, and a continuous
+      2&nbsp;m sun map (day, morning, afternoon, June, December). The model uses the newest LINZ 1&nbsp;m LiDAR surfaces
+      (buildings and trees: Wellington City 2025, Hutt City 2025, Upper Hutt City 2025, Porirua 2023), gap-filled from the
+      2013–14 survey, plus distant hills out to 12&nbsp;km.
     </p>
     <p class="all">
-      <a class="all-btn" href={`${base}sun/all/`}>🗺️ View all together</a>
-      <span>All {maps.length} suburbs on one map, with a cross-suburb address search</span>
+      <a class="all-btn" href={`${base}sun/all/`}>🗺️ Open the region map</a>
+      <span>One zoomable map for all four cities, with a region-wide address search</span>
+    </p>
+    <h2 class="sec">Detailed suburb maps</h2>
+    <p class="intro">
+      The original single-suburb maps ({maps.length} Wellington City suburbs, {total.toLocaleString('en-NZ')} addresses) use the same
+      model and colour scale, with each suburb's overlay as one image.
     </p>
     <ul class="grid">
       {
@@ -87,6 +93,10 @@ const total = maps.reduce((n, m) => n + m.addresses, 0);
   .all-btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.08);
+  }
+  .sec {
+    font-size: 1.3rem;
+    margin: 2.5rem 0 0.25rem;
   }
   .grid {
     list-style: none;
