@@ -1,0 +1,129 @@
+[
+ {
+  "name": "Aro Valley",
+  "slug": "aro-valley",
+  "href": "sun/aro-valley/",
+  "addresses": 1432,
+  "overlay_kb": 1103,
+  "median_garden_h": 5.8
+ },
+ {
+  "name": "Brooklyn",
+  "slug": "brooklyn",
+  "href": "sun/brooklyn/",
+  "addresses": 3098,
+  "overlay_kb": 3505,
+  "median_garden_h": 7.6
+ },
+ {
+  "name": "Hataitai",
+  "slug": "hataitai",
+  "href": "sun/hataitai/",
+  "addresses": 2794,
+  "overlay_kb": 1720,
+  "median_garden_h": 7.1
+ },
+ {
+  "name": "Island Bay",
+  "slug": "island-bay",
+  "href": "sun/island-bay/",
+  "addresses": 3385,
+  "overlay_kb": 2569,
+  "median_garden_h": 8.0
+ },
+ {
+  "name": "Johnsonville",
+  "slug": "johnsonville",
+  "href": "sun/johnsonville/",
+  "addresses": 5259,
+  "overlay_kb": 3611,
+  "median_garden_h": 8.6
+ },
+ {
+  "name": "Karori",
+  "slug": "karori",
+  "href": "karori-sun/",
+  "addresses": 6281,
+  "note": "original map"
+ },
+ {
+  "name": "Kelburn",
+  "slug": "kelburn",
+  "href": "sun/kelburn/",
+  "addresses": 1755,
+  "overlay_kb": 1704,
+  "median_garden_h": 6.1
+ },
+ {
+  "name": "Khandallah",
+  "slug": "khandallah",
+  "href": "sun/khandallah/",
+  "addresses": 3664,
+  "overlay_kb": 3895,
+  "median_garden_h": 7.5
+ },
+ {
+  "name": "Miramar",
+  "slug": "miramar",
+  "href": "sun/miramar/",
+  "addresses": 4181,
+  "overlay_kb": 2785,
+  "median_garden_h": 8.8
+ },
+ {
+  "name": "Mount Victoria",
+  "slug": "mount-victoria",
+  "href": "sun/mount-victoria/",
+  "addresses": 2685,
+  "overlay_kb": 1075,
+  "median_garden_h": 6.6
+ },
+ {
+  "name": "Newtown",
+  "slug": "newtown",
+  "href": "sun/newtown/",
+  "addresses": 4120,
+  "overlay_kb": 2009,
+  "median_garden_h": 7.5
+ },
+ {
+  "name": "Ngaio",
+  "slug": "ngaio",
+  "href": "sun/ngaio/",
+  "addresses": 2550,
+  "overlay_kb": 2849,
+  "median_garden_h": 7.5
+ },
+ {
+  "name": "Northland",
+  "slug": "northland",
+  "href": "sun/northland/",
+  "addresses": 1711,
+  "overlay_kb": 1473,
+  "median_garden_h": 6.5
+ },
+ {
+  "name": "Seatoun",
+  "slug": "seatoun",
+  "href": "sun/seatoun/",
+  "addresses": 1178,
+  "overlay_kb": 1163,
+  "median_garden_h": 8.2
+ },
+ {
+  "name": "Thorndon",
+  "slug": "thorndon",
+  "href": "sun/thorndon/",
+  "addresses": 2628,
+  "overlay_kb": 1380,
+  "median_garden_h": 5.8
+ },
+ {
+  "name": "Wadestown",
+  "slug": "wadestown",
+  "href": "sun/wadestown/",
+  "addresses": 1655,
+  "overlay_kb": 1607,
+  "median_garden_h": 6.8
+ }
+]

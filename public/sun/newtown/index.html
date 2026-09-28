@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newtown sunlight map: hours of direct sun + listings</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="style.css?v=202609272048">
+</head>
+<body>
+<div id="map"></div>
+<div class="panel" id="panel">
+  <h1>☀ Newtown sunlight</h1>
+  <div class="sub"><a href="../">← All Wellington sunlight maps</a></div>
+  <div class="sub">Average hours of direct sun per day (clear sky), from 1&nbsp;m LiDAR incl. buildings &amp; trees</div>
+  <div class="group" id="layer-buttons"></div>
+  <label class="row">Overlay opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.7"></label>
+  <div id="legend"></div>
+  <div class="group toggles">
+    <label><input type="checkbox" id="show-sale" checked> <span class="dot sale"></span>For sale</label>
+    <label><input type="checkbox" id="show-rent" checked> <span class="dot rent"></span>For rent</label>
+    <label><input type="checkbox" id="show-addr"> <span class="dot addr"></span>All addresses (zoom in)</label>
+  </div>
+  <div id="status" class="status"></div>
+  <details><summary>About / method</summary>
+    <p>Sun and shade come from a horizon-angle model run on the LINZ Wellington City 2025 1&nbsp;m LiDAR DSM, gap-filled with the 2013–14 survey, plus an 8&nbsp;m DSM out to 12&nbsp;km for distant hills. The sun's position is sampled every 10 minutes for all of 2026 (pvlib SPA). Cloud isn't modelled.</p>
+    <p><b>Morning</b> = sunrise to solar noon, <b>Afternoon</b> = solar noon to sunset. <b>Garden</b> (headline) = 1.7&nbsp;m above ground at the LINZ address point, ignoring the house itself. <b>Roof</b> = top of the matched LINZ building outline. The map overlay shows the top surface (roofs, tree canopy, open ground) at 2&nbsp;m, clipped to the Newtown suburb boundary (+100&nbsp;m) and to within 400&nbsp;m of an address; areas with no LiDAR data (e.g. sea) are left blank.</p>
+    <p>Maximum possible: <span id="possible"></span>.</p>
+    <p class="small">Data: LINZ LiDAR DSM/DEM, NZ Addresses, NZ Building Outlines (CC BY 4.0). Listings: Trade Me. Base map © OpenStreetMap contributors.</p>
+  </details>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js?v=202609272048"></script>
+</body>
+</html>

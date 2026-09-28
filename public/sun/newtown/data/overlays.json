@@ -1,0 +1,72 @@
+{
+ "suburb": "Newtown",
+ "layers": [
+  {
+   "key": "total",
+   "label": "Day (year avg)",
+   "file": "data/sun_total.webp",
+   "vmax": 12
+  },
+  {
+   "key": "am",
+   "label": "Morning (sunrise-solar noon)",
+   "file": "data/sun_am.webp",
+   "vmax": 6
+  },
+  {
+   "key": "pm",
+   "label": "Afternoon (solar noon-sunset)",
+   "file": "data/sun_pm.webp",
+   "vmax": 6
+  },
+  {
+   "key": "jun",
+   "label": "June (winter) avg",
+   "file": "data/sun_jun.webp",
+   "vmax": 9
+  },
+  {
+   "key": "dec",
+   "label": "December (summer) avg",
+   "file": "data/sun_dec.webp",
+   "vmax": 15
+  }
+ ],
+ "bounds": [
+  [
+   -41.323916676008665,
+   174.77174084606412
+  ],
+  [
+   -41.30478315399417,
+   174.7921871161885
+  ]
+ ],
+ "ramp": [
+  "#0b0b2a",
+  "#3b2b63",
+  "#8c3f73",
+  "#d9633f",
+  "#f5b93a",
+  "#fff6a8"
+ ],
+ "possible": {
+  "total": 12.06,
+  "am": 6.03,
+  "pm": 6.03,
+  "jun": 9.18,
+  "dec": 15.03
+ },
+ "levels": 64,
+ "render": {
+  "scale": 1,
+  "webp_quality": "lossless",
+  "px": [
+   854,
+   1064
+  ],
+  "total_kb": 2009,
+  "overlay_cells_in_poly": 645021,
+  "pct_in_poly_nodata_transparent": 0.0
+ }
+}

@@ -35,10 +35,10 @@ const site = {
     },
     {
       icon: '☀️',
-      title: 'Karori sunlight map',
-      body: 'Interactive map of average hours of direct sun across Karori, modelled from 1 m LiDAR, with current listings.',
-      href: `${base}karori-sun/`,
-      cta: 'Open the map →',
+      title: 'Wellington sunlight maps',
+      body: 'Interactive maps of average hours of direct sun for every address in 16 Wellington suburbs, from Karori to Seatoun, modelled from 1 m LiDAR.',
+      href: `${base}sun/`,
+      cta: 'Browse the maps →',
     },
   ],
   // ✏️ EDIT ME — footer links
@@ -56,7 +56,7 @@ const year = new Date().getFullYear();
     <a class="brand" href={base}>{site.name}</a>
     <nav>
       <a href={`${base}#features`}>Features</a>
-      <a href={`${base}karori-sun/`}>Karori sun map</a>
+      <a href={`${base}sun/`}>Sunlight maps</a>
       <a href={site.secondaryCta.href}>Contact</a>
     </nav>
   </header>

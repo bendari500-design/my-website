@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import maps from '../../data/sun-maps.json';
+
+// Always prefix internal links with BASE_URL so they work on GitHub Pages.
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const total = maps.reduce((n, m) => n + m.addresses, 0);
+---
+
+<Layout
+  title="Wellington sunlight maps"
+  description="Average hours of direct sun for every address in 16 Wellington City suburbs, modelled from 1 m LiDAR."
+>
+  <header class="nav">
+    <a class="brand" href={base}>← Home</a>
+  </header>
+  <main>
+    <h1>☀️ Wellington sunlight maps</h1>
+    <p class="intro">
+      Year-average, winter and summer hours of direct sun (clear sky) for {maps.length} Wellington City suburbs and
+      {total.toLocaleString('en-NZ')} LINZ addresses. The model uses the LINZ 2025 1&nbsp;m LiDAR surface
+      (buildings and trees), gap-filled from the 2013–14 survey, plus distant hills out to 12&nbsp;km. Each map
+      has a 2&nbsp;m overlay (day, morning, afternoon, June, December) and a garden and roof score for every address.
+    </p>
+    <ul class="grid">
+      {
+        maps.map((m) => (
+          <li>
+            <a class="card" href={`${base}${m.href}`}>
+              <h2>{m.name}</h2>
+              <p>{m.addresses.toLocaleString('en-NZ')} addresses</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="small">
+      Data: LINZ LiDAR DSM/DEM, NZ Addresses, NZ Building Outlines, NZ Suburbs and Localities (CC BY 4.0). Cloud
+      isn't modelled. Listings will appear once Trade Me API access is set up.
+    </p>
+  </main>
+</Layout>
+
+<style>
+  .nav,
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  .brand {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    margin: 0.5rem 0 1rem;
+    letter-spacing: -0.02em;
+  }
+  .intro {
+    color: var(--text-muted);
+    max-width: 760px;
+  }
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    display: block;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    margin: 0 0 0.25rem;
+  }
+  .card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .small {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>

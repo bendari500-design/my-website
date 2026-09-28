@@ -1,0 +1,72 @@
+{
+ "suburb": "Aro Valley",
+ "layers": [
+  {
+   "key": "total",
+   "label": "Day (year avg)",
+   "file": "data/sun_total.webp",
+   "vmax": 12
+  },
+  {
+   "key": "am",
+   "label": "Morning (sunrise-solar noon)",
+   "file": "data/sun_am.webp",
+   "vmax": 6
+  },
+  {
+   "key": "pm",
+   "label": "Afternoon (solar noon-sunset)",
+   "file": "data/sun_pm.webp",
+   "vmax": 6
+  },
+  {
+   "key": "jun",
+   "label": "June (winter) avg",
+   "file": "data/sun_jun.webp",
+   "vmax": 9
+  },
+  {
+   "key": "dec",
+   "label": "December (summer) avg",
+   "file": "data/sun_dec.webp",
+   "vmax": 15
+  }
+ ],
+ "bounds": [
+  [
+   -41.300080076705726,
+   174.75189474893398
+  ],
+  [
+   -41.28806063512582,
+   174.77255519911614
+  ]
+ ],
+ "ramp": [
+  "#0b0b2a",
+  "#3b2b63",
+  "#8c3f73",
+  "#d9633f",
+  "#f5b93a",
+  "#fff6a8"
+ ],
+ "possible": {
+  "total": 12.06,
+  "am": 6.03,
+  "pm": 6.04,
+  "jun": 9.18,
+  "dec": 15.03
+ },
+ "levels": 64,
+ "render": {
+  "scale": 1,
+  "webp_quality": "lossless",
+  "px": [
+   864,
+   669
+  ],
+  "total_kb": 1103,
+  "overlay_cells_in_poly": 343994,
+  "pct_in_poly_nodata_transparent": 0.0
+ }
+}
